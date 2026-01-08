@@ -60,6 +60,9 @@ public class Network {
      *  or if the "follows" addition failed for some reason, returns false. */
     public boolean addFollowee(String name1, String name2) 
     {
+        if (name1 == null || name2 == null)
+        return false;
+
         if (name1.equals(name2)) 
         return false;
 
@@ -145,8 +148,11 @@ public class Network {
         String result = "Network:\n";
 
         for (int i = 0; i < userCount; i++) 
-            result += users[i].toString() + "\n";
-
+        {
+            result += users[i].toString();
+            if (i < userCount - 1) 
+                result += "\n";
+        }
     return result;
 }
 }
